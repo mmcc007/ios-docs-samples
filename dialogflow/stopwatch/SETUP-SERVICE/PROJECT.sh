@@ -13,7 +13,7 @@
 # limitations under the License.
 #
 
-PROJECT=your-project-identifier
+PROJECT=stopwatch-194309
 
 SESSION=123456789
 

@@ -1,0 +1,60 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  before_all do
+    sh "cd .. && rm -rf Pods"
+    sh "cd .. && rm -f Podfile.lock"
+    cocoapods(integrate: "true")
+    sh "cd .. && ./RUNME"
+    # following line is not required when building in xCode
+    #sh "cd .. && mv Pods/BoringSSL/include/openssl/module.modulemap Pods/BoringSSL/include/openssl/BoringSSL.modulemap"
+  end
+
+  desc "Build only"
+  lane :build do
+    xcodebuild(
+    		workspace: "Stopwatch.xcworkspace", 
+		scheme: "Pods-Stopwatch",
+  		archive: true,
+	      )
+  end
+
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    match(	git_url: "ssh://git@dev.timecar.co:9022/timecar/certificates.git",
+#      		type: "development",
+      		type: "appstore",
+      		clone_branch_directly: true
+	 )
+    build_app(	
+#		workspace: "Stopwatch.xcworkspace", 
+		scheme: "Pods-Stopwatch"
+#		skip_archive: true,
+#		skip_package_ipa: true
+	     )
+    upload_to_testflight
+  end
+
+  lane :release do
+    capture_screenshots(
+		scheme: "Pods-Stopwatch"
+    )
+    build_app(
+		scheme: "Pods-Stopwatch"
+    )
+    upload_to_app_store       # Upload the screenshots and the binary to iTunes
+    slack                     # Let your team-mates know the new version is live
+  end
+
+end

@@ -18,7 +18,7 @@ import googleapis
 import AuthLibrary
 
 let Host = "dialogflow.googleapis.com"
-let ProjectName = "your-project-identifier" // UPDATE THIS
+let ProjectName = "stopwatch-194309" // UPDATE THIS
 let SessionID = "001"
 let SampleRate = 16000
 let AuthenticateWithServiceAccountCredentials = true
