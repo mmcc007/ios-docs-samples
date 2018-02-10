@@ -13,12 +13,11 @@ default_platform(:ios)
 
 platform :ios do
   before_all do
-    sh "cd .. && rm -rf Pods"
-    sh "cd .. && rm -f Podfile.lock"
-    cocoapods(integrate: "true")
-    sh "cd .. && ./RUNME"
-    # following line is not required when building in xCode
-    #sh "cd .. && mv Pods/BoringSSL/include/openssl/module.modulemap Pods/BoringSSL/include/openssl/BoringSSL.modulemap"
+    #sh "cd .. && rm -rf Pods"
+    #sh "cd .. && rm -f Podfile.lock"
+    #cocoapods(integrate: "true")
+    #sh "cd .. && ./RUNME"
+    sh "cd .. && ./INSTALL-COCOAPODS"
   end
 
   desc "Build only"
@@ -36,15 +35,25 @@ platform :ios do
 #      		type: "development",
       		type: "appstore",
       		clone_branch_directly: true
-	 )
+    )
     build_app(	
-#		workspace: "Stopwatch.xcworkspace", 
-		scheme: "Pods-Stopwatch"
-#		skip_archive: true,
-#		skip_package_ipa: true
+		scheme: "Stopwatch"
 	     )
     upload_to_testflight
   end
+#    xcodebuild(
+#    		workspace: "Stopwatch.xcworkspace", 
+#		scheme: "Stopwatch",
+#  		archive: true,
+#		output_name: "Stopwatch.ipa"
+#    )
+#    build_app(	
+#		workspace: "Stopwatch.xcworkspace", 
+#		scheme: "Pods-Stopwatch"
+#		skip_archive: true,
+#		skip_package_ipa: true
+#  		archive: true,
+#	     )
 
   lane :release do
     capture_screenshots(
