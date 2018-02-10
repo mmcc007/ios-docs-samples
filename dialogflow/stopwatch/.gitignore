@@ -1,8 +1,9 @@
 google
 Pods
 Podfile*
+Stopwatch.xcodeproj/xcuserdata/
+Stopwatch.xcodeproj/project.xcworkspace/
+Stopwatch.xcworkspace/
+Stopwatch.xcarchive/
 Stopwatch.app.dSYM.zip
 Stopwatch.ipa
-Stopwatch.xcarchive/
-Stopwatch.xcodeproj/xcuserdata/
-Stopwatch.xcworkspace/
