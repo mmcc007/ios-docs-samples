@@ -16,7 +16,7 @@ node ('osx') {
                 git credentialsId: '406214e1-4f8f-4ca1-8a6d-d3ac8b1d8787', url: 'http://mmccabe@dev.timecar.co:9090/timecar/ios-doc-samples.git'
                 sh "env"
                 //sh "ssh-agent bash -c 'ssh-add /Users/jenkins/.ssh/id_rsa'"
-                sh "cd ./dialogflow/stopwatch; fastlane certificates"
+                #sh "cd ./dialogflow/stopwatch; fastlane certificates"
                 sh "security -v unlock-keychain -p '$TIMECAR_PASSWORD' '/Users/jenkins/Library/Keychains/login.keychain-db'"
             }
             // stage('Test') {
@@ -28,7 +28,7 @@ node ('osx') {
             stage('beta') {
                 // sh "security -v unlock-keychain -p '$TIMECAR_PASSWORD' '/Users/jenkins/Library/Keychains/login.keychain-db'"
                 sh "cd dialogflow/stopwatch; fastlane beta"
-                archive 'TimeCar Poker.ipa'
+                archive 'Stopwatch.ipa'
             }
         }
     }
