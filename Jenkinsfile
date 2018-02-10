@@ -13,7 +13,7 @@ node ('osx') {
                 ]) {
             stage('Preparation') { // for display purposes
                 // Get some code from a GitHub repository
-                git credentialsId: '406214e1-4f8f-4ca1-8a6d-d3ac8b1d8787', url: 'http://mmccabe@dev.timecar.co:9090/timecar/timecar-poker.git'
+                git credentialsId: '406214e1-4f8f-4ca1-8a6d-d3ac8b1d8787', url: 'http://mmccabe@dev.timecar.co:9090/timecar/ios-doc-samples.git'
                 sh "env"
                 //sh "ssh-agent bash -c 'ssh-add /Users/jenkins/.ssh/id_rsa'"
                 sh "fastlane certificates"
