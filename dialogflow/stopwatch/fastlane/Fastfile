@@ -13,11 +13,11 @@ default_platform(:ios)
 
 platform :ios do
   before_all do
-    #sh "cd .. && rm -rf Pods"
-    #sh "cd .. && rm -f Podfile.lock"
-    #cocoapods(integrate: "true")
-    #sh "cd .. && ./RUNME"
-    sh "cd .. && ./INSTALL-COCOAPODS"
+    sh "cd .. && rm -rf Pods"
+    sh "cd .. && rm -f Podfile.lock"
+    cocoapods(integrate: "true")
+    sh "cd .. && ./RUNME"
+    #sh "cd .. && ./INSTALL-COCOAPODS"
   end
 
   desc "Build only"
