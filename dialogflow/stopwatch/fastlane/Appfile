@@ -1,4 +1,5 @@
-app_identifier "org.cocoapods.Pods-Stopwatch" # The bundle identifier of your app
+
+app_identifier "com.orbsoft.stopwatch" # The bundle identifier of your app
 apple_id "mmcc007@gmail.com" # Your Apple email address
 
 itc_team_id "118607454" # iTunes Connect Team ID

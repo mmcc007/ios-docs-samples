@@ -37,10 +37,10 @@ grep -rl "google/rpc/Status.pbobjc.h"  google/** | \
 grep -rl "google/type/Latlng.pbobjc.h"  google/** | \
 	xargs sed -i '' s@'"google\/type\/Latlng\.pbobjc\.h"'@'\<googleapis\/Latlng\.pbobjc\.h\>'@g
 
-echo "Opening the project workspace in Xcode"
-open Stopwatch.xcworkspace
-
-echo "Now press the run button!"
+#echo "Opening the project workspace in Xcode"
+#open Stopwatch.xcworkspace
+#
+#echo "Now press the run button!"
 
 
 
